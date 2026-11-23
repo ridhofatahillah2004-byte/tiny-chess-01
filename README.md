@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/tiny-chess-01/ridhofatahillah2004-byte/tiny-chess-01/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 [![reward](https://make.fun/badge/tiny-chess-01/ridhofatahillah2004-byte/tiny-chess-01/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
-A complete chess engine in a single `main.py` (3,297 bytes, packed). It plays
+A complete chess engine in a single `main.py` (3,326 bytes, packed). It plays
 the make.fun tiny-chess-01 gauntlet over HTTP: it reads the game state from
 `$MAKEFUN_ENV_URL`, searches, and posts its move back.
 
@@ -12,8 +12,9 @@ the make.fun tiny-chess-01 gauntlet over HTTP: it reads the game state from
 
 - 0x88 board, make/unmake with incremental evaluation and Zobrist hashing
 - Negamax with alpha-beta, transposition table, killer moves, MVV-LVA ordering
+- Late-move reductions (quiet moves past the first three, depth 3+, not in check)
 - Quiescence search (captures and promotions; all evasions when in check)
-- Iterative deepening on a fixed node budget (120,000 nodes/move) — fully
+- Iterative deepening on a fixed node budget (160,000 nodes/move) — fully
   deterministic: no wall clock, no unseeded randomness
 - Evaluation: material + piece-square tables (generated from formulas) and a
   king-safety table; repetition and fifty-move draws handled in search
